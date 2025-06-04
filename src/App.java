@@ -46,15 +46,32 @@ public class App {
         Persona p1 = new Persona("Pablo");
         Persona p2 = new Persona("Juan");
         Persona p3 = new Persona("María");
+        Persona p4 = new Persona("Pedro");
+        Persona p5 = new Persona("David");
+        Persona p6 = new Persona("Diego");
 
         ColaG<Persona> colaPersonas = new ColaG<Persona>();
         colaPersonas.add(p1);
         colaPersonas.add(p2);
         colaPersonas.add(p3);
+        colaPersonas.add(p4);
+        colaPersonas.add(p5);
+        colaPersonas.add(p6);
         System.out.println("Tam: "+colaPersonas.size());
         colaPersonas.printCola();
         System.out.println("A tiene a la persona => " + colaPersonas.remove());
         System.out.println("Tam: "+colaPersonas.size());
+        colaPersonas.printCola();
+
+        System.out.println("\tBusqueda por nombre");
+        Persona encontrada = colaPersonas.findByName("David");
+        if (encontrada != null){
+            System.out.println( "\tEncontrada--- " + encontrada);
+        }else{
+            System.out.println("\tNo se encontró persona con ese nombre");
+        }
+        Persona pEliminada = colaPersonas.removeByName("David");
+        System.out.println("\tEliminada por nombre: " + pEliminada);
         colaPersonas.printCola();
     }
 }

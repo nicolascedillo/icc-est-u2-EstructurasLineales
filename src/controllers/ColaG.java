@@ -3,6 +3,7 @@ package controllers;
 import java.util.EmptyStackException;
 
 import models.NodeGeneric;
+import models.Persona;
 
 public class ColaG<T> {
     private NodeGeneric<T> primero;
@@ -60,4 +61,43 @@ public class ColaG<T> {
     public int size(){
         return size;
     }
+
+    public T findByName(String nombre){
+        NodeGeneric<T> valor = primero;
+        while(valor != null){
+            Persona persona = (Persona) valor.getValue();
+            if (persona.getNombre().equals(nombre)) {
+                return valor.getValue();
+            }
+            valor = valor.getNext();
+        }
+        return null;
+    }
+
+    public T removeByName(String nombre) {
+        NodeGeneric<T> actual = primero;
+        NodeGeneric<T> anterior = null;
+
+        while (actual != null) {
+            Persona persona = (Persona) actual.getValue();
+            if (persona.getNombre().equals(nombre)) {
+                if (anterior == null) {
+                    primero = actual.getNext();
+                } else {
+                    anterior.setNext(actual.getNext());
+                }
+
+                if (actual == ultimo) {
+                    ultimo = anterior;
+                }
+
+                size--;
+                return actual.getValue();
+            }
+            anterior = actual;
+            actual = actual.getNext();
+        }
+        return null;
+    }
+    
 }
