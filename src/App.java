@@ -1,6 +1,8 @@
 import controllers.Stack;
 import controllers.StackG;
 import models.Persona;
+import Ejercicio_01_sign.SignValidator;
+import Ejercicio_02_sorting.StackSorter;
 import controllers.Cola;
 import controllers.ColaG;
 
@@ -73,5 +75,14 @@ public class App {
         Persona pEliminada = colaPersonas.removeByName("David");
         System.out.println("\tEliminada por nombre: " + pEliminada);
         colaPersonas.printCola();
+
+        SignValidator signValidator = new SignValidator();
+
+        System.out.println(signValidator.isValid("(){}"));
+
+        StackSorter stackSorter = new StackSorter();
+
+        stackSorter.sortStack(stack);
+        stack.printStack();
     }
 }
